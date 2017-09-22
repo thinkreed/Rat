@@ -5,6 +5,17 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+#define the name of the project
+project(Rat)
+
+#set SOURCE_FILES to save the source files
+set (SOURCE_PATH src/main/cpp/ )
+set (SOURCE_FILES ${SOURCE_PATH}native-lib.cpp)
+
+#set the path for headers
+include_directories( ${SOURCE_PATH}include/ )
+include_directories( ${SOURCE_PATH} )
+
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
@@ -17,7 +28,7 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/native-lib.cpp )
+             ${SOURCE_FILES} )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
