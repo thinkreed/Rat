@@ -5,14 +5,17 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-#define the name of the project
+# define the name of the project
 project(Rat)
 
-#set SOURCE_FILES to save the source files
+# define sub projects
+add_subdirectory (FFmpeg)
+
+# set SOURCE_FILES to save the source files
 set (SOURCE_PATH src/main/cpp/ )
 set (SOURCE_FILES ${SOURCE_PATH}native-lib.cpp)
 
-#set the path for headers
+# set the path for headers
 include_directories( ${SOURCE_PATH}include/ )
 include_directories( ${SOURCE_PATH} )
 
