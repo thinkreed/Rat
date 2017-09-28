@@ -2,8 +2,6 @@ package thinkreed.rat
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,11 +9,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Example of a call to a native method
-        sample_text.text = stringFromJNI()
-        sample_text.setOnClickListener {
-            Toast.makeText(this@MainActivity, "click on text", Toast.LENGTH_SHORT).show()
+        loadContent()
+    }
+
+    private fun loadContent() {
+        var fragment = supportFragmentManager.findFragmentById(R.id.container)
+
+        if (fragment == null) {
+            fragment = FrameFragment.INSTANCE
         }
+
+        supportFragmentManager.beginTransaction().add(R.id.container, fragment).commit()
     }
 
     /**
