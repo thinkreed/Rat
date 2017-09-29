@@ -11,12 +11,12 @@ kotlin {
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 25
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "thinkreed.rat"
         minSdkVersion 18
-        targetSdkVersion 26
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -47,7 +47,7 @@ repluginHostConfig {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:appcompat-v7:25.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
@@ -57,8 +57,6 @@ dependencies {
     androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.3'
     testCompile 'org.mockito:mockito-core:1.10.19'
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.18"
-    // retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
     // event bus
     compile 'org.greenrobot:eventbus:3.0.0'
     // re plugin
