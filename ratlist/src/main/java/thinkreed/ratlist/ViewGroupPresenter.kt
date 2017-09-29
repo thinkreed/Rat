@@ -1,19 +1,30 @@
 package thinkreed.ratlist
 
+import android.content.Context
+import android.view.LayoutInflater
+
 /**
  * Created by thinkreed on 2017/9/28.
  */
-abstract class ViewGroupPresenter : Presenter() {
+abstract class ViewGroupPresenter<T>(layoutId: Int, context: Context) : Presenter<T>() {
 
-    private val presenters = hashMapOf<Int, Presenter>()
+    private val contentView by lazy {
+        LayoutInflater.from(context).inflate(layoutId, null, false)
+    }
 
-    override fun <T> bind(model: T) {
+    private val presenters by lazy { hashMapOf<Int, Presenter<T>>() }
+
+    override fun bind(model: T) {
         presenters.values.forEach { presenter ->
-            presenter.bind(model)
+            presenter.render(model)
         }
     }
 
-    fun addPresenter(resId: Int, presenter: Presenter) = presenters.put(resId, presenter)
+    fun addPresenter(resId: Int, presenter: Presenter<T>): ViewGroupPresenter<T> {
+        presenter.bindView(resId, contentView.findViewById(resId))
+        presenters.put(resId, presenter)
+        return this
+    }
 
     fun removePresenterById(resId: Int) {
         if (presenters[resId] != null) {
