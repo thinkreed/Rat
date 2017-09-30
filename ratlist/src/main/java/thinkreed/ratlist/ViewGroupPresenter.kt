@@ -1,16 +1,11 @@
 package thinkreed.ratlist
 
 import android.content.Context
-import android.view.LayoutInflater
 
 /**
  * Created by thinkreed on 2017/9/28.
  */
 abstract class ViewGroupPresenter<T>(layoutId: Int, context: Context) : Presenter<T>() {
-
-    private val contentView by lazy {
-        LayoutInflater.from(context).inflate(layoutId, null, false)
-    }
 
     private val presenters by lazy { hashMapOf<Int, Presenter<T>>() }
 
@@ -21,7 +16,7 @@ abstract class ViewGroupPresenter<T>(layoutId: Int, context: Context) : Presente
     }
 
     fun addPresenter(resId: Int, presenter: Presenter<T>): ViewGroupPresenter<T> {
-        presenter.bindView(resId, contentView.findViewById(resId))
+        presenter.bindView(resId, view.findViewById(resId))
         presenters.put(resId, presenter)
         return this
     }
