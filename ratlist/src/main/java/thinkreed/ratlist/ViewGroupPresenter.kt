@@ -28,4 +28,6 @@ abstract class ViewGroupPresenter<T>(layoutId: Int, context: Context) : Presente
     }
 
     fun clearPresenters() = presenters.clear()
+
+    fun getCounts() = presenters.size
 }
