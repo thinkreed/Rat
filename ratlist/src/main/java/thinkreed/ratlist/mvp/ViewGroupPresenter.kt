@@ -1,4 +1,4 @@
-package thinkreed.ratlist
+package thinkreed.ratlist.mvp
 
 import android.content.Context
 
