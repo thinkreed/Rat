@@ -1,11 +1,11 @@
 package thinkreed.ratlist.mvp
 
-import android.content.Context
+import android.view.ViewGroup
 
 /**
  * Created by thinkreed on 2017/9/28.
  */
-abstract class ViewGroupPresenter<T>(layoutId: Int, context: Context) : Presenter<T>() {
+abstract class ViewGroupPresenter<T>(layoutId: Int, viewGroup: ViewGroup) : Presenter<T>() {
 
     private val presenters by lazy { hashMapOf<Int, Presenter<T>>() }
 

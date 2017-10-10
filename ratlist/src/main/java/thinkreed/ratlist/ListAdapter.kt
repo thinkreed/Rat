@@ -1,9 +1,11 @@
 package thinkreed.ratlist
 
+import android.view.ViewGroup
+
 /**
  * Created by thinkreed on 2017/10/8.
  */
-abstract class ListAdapter :MvpAdapter() {
+class ListAdapter : MvpAdapter() {
 
     private val models by lazy {
         listOf<Model>()
@@ -15,5 +17,9 @@ abstract class ListAdapter :MvpAdapter() {
 
     override fun getItemViewType(position: Int): Int {
         return models[position].viewType
+    }
+
+    override fun onCreateViewGroupPresenter(parent: ViewGroup?, viewType: Int): ModelViewGroupPresenter? {
+        return PresenterFactory.createViewGroupPresenter(parent, viewType)
     }
 }

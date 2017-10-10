@@ -2,7 +2,6 @@ package thinkreed.ratlist
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import thinkreed.ratlist.mvp.ViewGroupPresenter
 
 /**
  * Created by thinkreed on 2017/10/7.
@@ -15,5 +14,5 @@ abstract class MvpAdapter : RecyclerView.Adapter<ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
     }
 
-    abstract fun onCreateViewGroupPresenter(parent: ViewGroup?, viewType: Int): ViewGroupPresenter<Model>
+    abstract fun onCreateViewGroupPresenter(parent: ViewGroup?, viewType: Int): ModelViewGroupPresenter?
 }
