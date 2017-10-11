@@ -8,7 +8,7 @@ import android.view.ViewGroup
 class ListAdapter : MvpAdapter() {
 
     private val models by lazy {
-        listOf<Model>()
+        mutableListOf<Model>()
     }
 
     override fun getItemCount(): Int {
@@ -21,5 +21,30 @@ class ListAdapter : MvpAdapter() {
 
     override fun onCreateViewGroupPresenter(parent: ViewGroup?, viewType: Int): ModelViewGroupPresenter? {
         return PresenterFactory.createViewGroupPresenter(parent, viewType)
+    }
+
+    fun addItem(model: Model) {
+        models.add(model)
+    }
+
+    fun removeItem(model: Model) {
+        models.remove(model)
+    }
+
+    fun clear() {
+        models.clear()
+    }
+
+    fun refreshItems(newModels: MutableList<Model>) {
+        clear()
+        models.addAll(newModels)
+    }
+
+    fun getItemByPosition(position: Int): Model {
+        return models[position]
+    }
+
+    fun setItemAtPosition(position: Int, model: Model) {
+        models[position] = model
     }
 }
